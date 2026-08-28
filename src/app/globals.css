@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Palette: warm architectural ivory, stone, charcoal, muted bronze ── */
+  --color-ivory: #f4f1e9;
+  --color-stone: #eae4d7;
+  --color-sand: #dcd4c2;
+  --color-ink: #17150f;
+  --color-ink-2: #211d15;
+  --color-mute: #6f6958;
+  --color-mute-light: #a39c8a;
+  --color-bronze: #9c7c4e;
+  --color-line: rgba(23, 21, 15, 0.14);
+  --color-line-light: rgba(244, 241, 233, 0.16);
+
+  --font-serif: "Instrument Serif", "Georgia", serif;
+  --font-sans: "Manrope Variable", "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee 32s linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-line);
+}
+
+@utility text-outline-light {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-line-light);
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-ivory);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-bronze);
+  outline-offset: 3px;
+}
+
+img {
+  user-select: none;
+}
+
+/* ── Lenis smooth scroll ─────────────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ── Custom cursor takes over on precise pointers only ── */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  a,
+  button,
+  [role="button"] {
+    cursor: none;
+  }
+  input,
+  textarea,
+  select,
+  label {
+    cursor: auto;
+  }
+}
+
+/* ── Film grain (extremely subtle) ───────────────────── */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+}
+
+/* ── Animated underline link ─────────────────────────── */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover::after,
+.link-underline[data-active="true"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Form field underline focus ──────────────────────── */
+.field {
+  position: relative;
+}
+.field::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--color-bronze);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.field:focus-within::after {
+  transform: scaleX(1);
+}
+
+/* ── Vertical writing ────────────────────────────────── */
+.vertical-rl {
+  writing-mode: vertical-rl;
+}
+
+/* ── Hide scrollbars where used for carousels ────────── */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    animation: none;
+  }
+}
