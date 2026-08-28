@@ -12,6 +12,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { Footer } from "@/components/layout/Footer";
 import { site, hasPhone, hasMaps } from "@/data/site";
+import { business } from "@/data/business";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -53,19 +54,18 @@ export const viewport: Viewport = {
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Shakeel False Ceiling Work",
-  description:
-    "False ceiling and interior ceiling craftsmanship in Hyderabad — false ceilings, gypsum ceiling work, lighting integration and custom ceiling design for residential and commercial spaces.",
-  url: site.url,
-  image: `${site.url}/images/hero.jpg`,
-  telephone: "+91 99598 67685",
+  name: business.name,
+  description: business.description,
+  url: business.website,
+  image: `${business.website}images/hero.jpg`,
+  telephone: business.phone,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Plot No: 5, Near Flyover, New Hafeezpet, Aditya Nagar, Hafeezpet",
-    addressLocality: "Hyderabad",
-    addressRegion: "Telangana",
-    postalCode: "500049",
-    addressCountry: "IN",
+    streetAddress: business.address.street,
+    addressLocality: business.address.locality,
+    addressRegion: business.address.city,
+    postalCode: business.address.postalCode,
+    addressCountry: business.address.country,
   },
   hasMap: site.mapsUrl,
 };

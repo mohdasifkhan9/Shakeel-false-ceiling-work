@@ -11,6 +11,8 @@
  * ─────────────────────────────────────────────────────────────
  */
 
+import { business } from "./business";
+
 export interface NavItem {
   label: string;
   href: string;
@@ -18,18 +20,18 @@ export interface NavItem {
 }
 
 export const site = {
-  name: "Shakeel False Ceiling Work",
+  name: business.name,
   short: "SHAKEEL",
   descriptor: "False Ceiling Work",
   tagline: "False ceiling & interior craftsmanship",
-  city: "Hyderabad",
-  region: "Telangana, India",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://shakeelfalseceilingwork.in",
+  city: business.address.city,
+  region: `${business.address.state}, India`,
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? business.website.replace(/\/$/, ""),
 
-  phone: "+91 99598 67685",
+  phone: business.phone,
   whatsapp: "+91 99598 67685",
   email: "", // Not verified
-  address: "Plot No: 5, Near Flyover, New Hafeezpet, Aditya Nagar, Hafeezpet, Hyderabad, Telangana 500049",
+  address: `${business.address.street}, ${business.address.locality}, ${business.address.city}, ${business.address.state} ${business.address.postalCode}`,
   mapsUrl: "https://maps.google.com/?q=Shakeel+False+Ceiling+Work+Plot+No:+5,+Near+Flyover,+New+Hafeezpet,+Aditya+Nagar,+Hafeezpet,+Hyderabad,+Telangana+500049",
 };
 
