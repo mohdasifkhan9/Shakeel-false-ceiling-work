@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     images: ["/images/hero.jpg"],
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: "Y5Y4kQJBzHNc1ck1OuQS4gx5IDeFyBh6KHj52TD66ZU",
+  },
 };
 
 export const viewport: Viewport = {
