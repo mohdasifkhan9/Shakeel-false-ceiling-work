@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     });
 
     // Forward to Google Sheets Webhook if configured
-    const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+    const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL ?? "https://script.google.com/macros/s/AKfycbwy4eHVhWxgFj_-pYUXWW3ak2It0E4J68aF-yMaNOnoW51Ug5vwbrHNJkzBW9pKRHGh/exec";
     if (webhookUrl) {
       try {
         await fetch(webhookUrl, {
