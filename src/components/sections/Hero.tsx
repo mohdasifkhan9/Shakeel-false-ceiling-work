@@ -99,19 +99,7 @@ export function Hero() {
         style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
         className="relative z-10 flex h-full flex-col justify-end px-5 pb-24 text-ivory md:px-10 md:pb-16"
       >
-        <h1 className="sr-only">False Ceiling Contractor & Ceiling Work in Hyderabad</h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: base + 0.2 }}
-          className="mb-6 flex items-center gap-3 text-[10px] font-medium tracking-[0.35em] uppercase md:text-[11px]"
-        >
-          <span className="h-px w-10 bg-ivory/50" aria-hidden />
-          FALSE CEILING & INTERIOR CRAFTSMANSHIP · HYDERABAD
-        </motion.p>
-
-        <h2 className="font-serif text-[clamp(3.4rem,11vw,10.5rem)] leading-[0.92] tracking-[-0.03em] uppercase">
+        <h1 className="font-serif text-[clamp(3.4rem,11vw,10.5rem)] leading-[0.92] tracking-[-0.03em] uppercase">
           {LINES.map((line, i) => (
             <span key={line} className="block overflow-hidden">
               <motion.span
@@ -124,7 +112,7 @@ export function Hero() {
               </motion.span>
             </span>
           ))}
-        </h2>
+        </h1>
 
         <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <motion.p
@@ -133,6 +121,7 @@ export function Hero() {
             transition={{ duration: 0.9, ease: EASE, delay: base + 0.75 }}
             className="max-w-md text-[15px] leading-relaxed text-ivory/75"
           >
+            <span className="block font-semibold text-ivory mb-2">False Ceiling Contractor & Ceiling Work in Hyderabad</span>
             False ceiling and interior ceiling solutions for residential and commercial spaces in Hafeezpet, Hyderabad.
           </motion.p>
 
