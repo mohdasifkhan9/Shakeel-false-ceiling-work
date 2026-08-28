@@ -7,12 +7,16 @@ export interface Service {
   image: string;
   imageAlt: string;
   applications: string[];
+  published: boolean;
+  updatedAt: string;
 }
 
 /** The definitive service list confirmed by the business. */
 export const services: Service[] = [
   {
     slug: "false-ceiling",
+    published: true,
+    updatedAt: "2026-08-28",
     index: "01",
     title: "FALSE CEILING WORK",
     short: "Modern ceiling structures designed around the character of the space.",
@@ -24,6 +28,8 @@ export const services: Service[] = [
   },
   {
     slug: "gypsum-false-ceiling",
+    published: true,
+    updatedAt: "2026-08-28",
     index: "02",
     title: "GYPSUM FALSE CEILING",
     short: "Clean, contemporary ceiling solutions for residential and commercial interiors.",
@@ -35,6 +41,8 @@ export const services: Service[] = [
   },
   {
     slug: "pop-ceiling",
+    published: true,
+    updatedAt: "2026-08-28",
     index: "03",
     title: "POP CEILING WORK",
     short: "Traditional and customized Plaster of Paris (POP) designs for premium finish.",
@@ -46,6 +54,8 @@ export const services: Service[] = [
   },
   {
     slug: "cove-lighting",
+    published: true,
+    updatedAt: "2026-08-28",
     index: "04",
     title: "COVE LIGHTING INTEGRATION",
     short: "Ceiling designs planned around ambient, recessed and architectural lighting.",
@@ -57,6 +67,8 @@ export const services: Service[] = [
   },
   {
     slug: "residential",
+    published: true,
+    updatedAt: "2026-08-28",
     index: "05",
     title: "RESIDENTIAL CEILING WORK",
     short: "Living rooms, bedrooms, dining spaces and other home interiors.",
@@ -68,6 +80,8 @@ export const services: Service[] = [
   },
   {
     slug: "commercial",
+    published: true,
+    updatedAt: "2026-08-28",
     index: "06",
     title: "COMMERCIAL CEILING WORK",
     short: "Ceiling solutions for offices, retail spaces and commercial interiors.",

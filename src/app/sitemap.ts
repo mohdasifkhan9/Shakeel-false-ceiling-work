@@ -4,27 +4,30 @@ import { services } from "@/data/services";
 import { site } from "@/data/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  // Use a stable, specific content update date for core pages
+  const lastSiteUpdate = new Date("2026-08-28");
+
+  // Core static pages
   const staticRoutes = ["", "/work", "/services", "/about", "/contact"].map((path) => ({
     url: `${site.url}${path}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: path === "" ? 1 : 0.8,
+    lastModified: lastSiteUpdate,
   }));
 
-  const serviceRoutes = services.map((s) => ({
-    url: `${site.url}/services/${s.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  // Dynamic services (filtered by published state and using their exact updatedAt value)
+  const serviceRoutes = services
+    .filter((s) => s.published === true)
+    .map((s) => ({
+      url: `${site.url}/services/${s.slug}`,
+      lastModified: new Date(s.updatedAt),
+    }));
 
-  const projectRoutes = projects.map((p) => ({
-    url: `${site.url}/work/${p.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
+  // Dynamic project pages (filtered by published state and using their exact updatedAt value)
+  const projectRoutes = projects
+    .filter((p) => p.published === true)
+    .map((p) => ({
+      url: `${site.url}/work/${p.slug}`,
+      lastModified: new Date(p.updatedAt),
+    }));
 
   return [...staticRoutes, ...serviceRoutes, ...projectRoutes];
 }

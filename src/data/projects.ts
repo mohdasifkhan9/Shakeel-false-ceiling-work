@@ -47,6 +47,8 @@ export interface Project {
   result: { src: string; alt: string };
   beforeAfter?: boolean;
   representative: true;
+  published: boolean;
+  updatedAt: string;
 }
 
 export const projects: Project[] = [
@@ -94,6 +96,8 @@ export const projects: Project[] = [
       alt: "Finished living room with warm layered ceiling in the evening",
     },
     representative: true,
+    published: true,
+    updatedAt: "2026-08-28",
   },
   {
     slug: "warm-minimal-bedroom",
@@ -139,6 +143,8 @@ export const projects: Project[] = [
       alt: "Completed bedroom ceiling in warm evening light",
     },
     representative: true,
+    published: true,
+    updatedAt: "2026-08-28",
   },
   {
     slug: "linear-office",
@@ -184,6 +190,8 @@ export const projects: Project[] = [
       alt: "Completed commercial ceiling with linear lighting",
     },
     representative: true,
+    published: true,
+    updatedAt: "2026-08-28",
   },
   {
     slug: "dining-atelier",
@@ -229,6 +237,8 @@ export const projects: Project[] = [
       alt: "Completed dining ceiling feature in the evening",
     },
     representative: true,
+    published: true,
+    updatedAt: "2026-08-28",
   },
   {
     slug: "the-fifth-wall",
@@ -274,6 +284,8 @@ export const projects: Project[] = [
       alt: "The finished fifth wall in warm ambient light",
     },
     representative: true,
+    published: true,
+    updatedAt: "2026-08-28",
   },
   {
     slug: "form-and-finish",
@@ -320,6 +332,8 @@ export const projects: Project[] = [
     },
     beforeAfter: true,
     representative: true,
+    published: true,
+    updatedAt: "2026-08-28",
   },
 ];
 
