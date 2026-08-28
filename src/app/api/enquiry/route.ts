@@ -31,18 +31,50 @@ export async function POST(req: Request) {
   }
 
   try {
+    const location = clip(body.location, 160);
+    const propertyType = clip(body.propertyType, 60);
+    const service = clip(body.service, 120);
+    const area = clip(body.area, 40);
+    const message = clip(body.message, 2000);
+    const attachmentName = clip(body.attachmentName, 200);
+
     await db.insert(enquiries).values({
       name,
       phone,
-      location: clip(body.location, 160),
-      propertyType: clip(body.propertyType, 60),
-      service: clip(body.service, 120),
-      area: clip(body.area, 40),
-      message: clip(body.message, 2000),
-      attachmentName: clip(body.attachmentName, 200),
+      location,
+      propertyType,
+      service,
+      area,
+      message,
+      attachmentName,
     });
+
+    // Forward to Google Sheets Webhook if configured
+    const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            submittedAt: new Date().toISOString(),
+            name,
+            phone,
+            location: location || "",
+            propertyType: propertyType || "",
+            service: service || "",
+            area: area || "",
+            message: message || "",
+          }),
+        });
+      } catch (webhookErr) {
+        console.error("Failed to forward enquiry to Google Sheets Webhook:", webhookErr);
+      }
+    }
+
     return Response.json({ ok: true });
-  } catch {
+  } catch (dbErr) {
+    console.error("Database insertion failed for enquiry:", dbErr);
     return Response.json(
       { error: "We couldn't save your enquiry right now — please try again." },
       { status: 500 },
