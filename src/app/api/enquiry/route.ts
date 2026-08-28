@@ -42,17 +42,21 @@ export async function POST(req: Request) {
 
   // Try database insert
   try {
-    await db.insert(enquiries).values({
-      name,
-      phone,
-      location,
-      propertyType,
-      service,
-      area,
-      message,
-      attachmentName,
-    });
-    dbSuccess = true;
+    if (db) {
+      await db.insert(enquiries).values({
+        name,
+        phone,
+        location,
+        propertyType,
+        service,
+        area,
+        message,
+        attachmentName,
+      });
+      dbSuccess = true;
+    } else {
+      console.warn("Database not initialized (missing DATABASE_URL). Skipping DB insert.");
+    }
   } catch (dbErr) {
     console.error("Database insertion failed for enquiry:", dbErr);
   }
