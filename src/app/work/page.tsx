@@ -32,9 +32,7 @@ export default function WorkPage() {
         lines={[
           "Selected",
           "Ceiling",
-          <>
-            <span className="italic normal-case">Work</span>
-          </>,
+          <span key="work" className="italic normal-case">Work</span>,
         ]}
         description="Ceiling directions for homes and commercial spaces — layered trays, floating planes, cove-integrated light. Filter by the kind of space you're planning."
       />

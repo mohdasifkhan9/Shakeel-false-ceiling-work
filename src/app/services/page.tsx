@@ -52,9 +52,7 @@ export default function ServicesPage() {
         lines={[
           "False Ceiling",
           "Services",
-          <>
-            <span className="italic normal-case">in Hyderabad</span>
-          </>,
+          <span key="hyd" className="italic normal-case">in Hyderabad</span>,
         ]}
         description="Six disciplines around one material question: what should this room feel like from above? Every scope begins with a conversation about your space."
       />

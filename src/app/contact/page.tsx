@@ -42,9 +42,7 @@ export default function ContactPage() {
         eyebrow="Contact"
         lines={[
           "Let's Talk About",
-          <>
-            <span className="italic normal-case">Your Space</span>
-          </>,
+          <span key="your-space" className="italic normal-case">Your Space</span>,
         ]}
         description="Planning a new ceiling or upgrading an existing interior? Tell us about your space — a few details are enough to begin."
       />

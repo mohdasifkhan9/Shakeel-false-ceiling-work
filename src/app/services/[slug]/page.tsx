@@ -127,9 +127,7 @@ export default async function ServiceDetailPage({
           eyebrow={`Service ${service.index}`}
           lines={[
             service.title.split(" ").slice(0, 2).join(" "),
-            <>
-              <span className="italic normal-case">{service.title.split(" ").slice(2).join(" ").toLowerCase() || "detail"}</span>
-            </>,
+            <span key="detail" className="italic normal-case">{service.title.split(" ").slice(2).join(" ").toLowerCase() || "detail"}</span>,
           ]}
           description={service.short}
           className="px-0 pt-10"

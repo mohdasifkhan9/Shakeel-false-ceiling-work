@@ -56,9 +56,7 @@ export default function AboutPage() {
         lines={[
           "False Ceiling",
           "Craftsmanship",
-          <>
-            <span className="italic normal-case">in Hyderabad</span>
-          </>,
+          <span key="hyd" className="italic normal-case">in Hyderabad</span>,
         ]}
         description={`${site.name} — false ceiling and interior ceiling craftsmanship, based in Hafeezpet, Hyderabad.`}
       />
